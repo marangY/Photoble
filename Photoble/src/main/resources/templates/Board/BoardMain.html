@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div th:text="${board.title}" th:href="@{/board/view(id=${board.id})}" class="title"></div>
+            <div class="title"><a th:href="@{/board/view(id=${board.id})}" th:text="${board.title}" style="text-decoration-line : none"></a></div>
             <h3 th:text="${board.user}" class="user-name"></h3>
         </li>
     </ul>

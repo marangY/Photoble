@@ -1,0 +1,250 @@
+.nav-bar {
+    width: 1920px;
+    height: 200px;
+    background: #396cfd;
+}
+.logo {
+    position: relative;
+    width: 430px;
+    height: 100px;
+    left: 80px;
+    top: 60px;
+}
+.logo-image {
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    left: 80px;
+    top: 60px;
+}
+.logo-title {
+    color: white;
+    position: relative;
+    display: inline;
+    font-size: 48pt;
+    top: -30px;
+}
+.switch-page {
+    position: absolute;
+    left: 1630px;
+    top: 60px;
+    width: 210px;
+    height: 50px;
+    text-align: center;
+}
+.notice {
+    width: 100px;
+    height: 50px;
+    border: none;
+    background-color: #396cfd;
+    color: white;
+    font-size: 12pt;
+    font-weight: 600;
+}
+.logout {
+    width: 100px;
+    height: 50px;
+    border: none;
+    background-color: #396cfd;
+    color: white;
+    font-size: 12pt;
+    font-weight: 600;
+}
+
+
+.Main {
+    width: 1920px;
+    height: 880px;
+}
+.division-line1 {
+    position: absolute;
+    margin-left: 460px;
+    width: 4px;
+    height: 830px;
+    background-color: #396cfd;
+}
+.division-line2 {
+    position: absolute;
+    margin-left: 1460px;
+    width: 4px;
+    height: 830px;
+    background-color: #396cfd;
+}
+
+
+.content {
+    position: absolute;
+    width: 1920px;
+    height: 880px;
+}
+header {
+    position: absolute;
+    width: 1000px;
+    height: 135px;
+    left: 460px;
+}
+.board-title {
+    margin-left: 30px;
+    margin-top: 30px;
+    font-size: 30pt;
+}
+
+
+.user-info {
+    position: absolute;
+    height: 30px;
+    top: 105px;
+    left: 30px;
+}
+.user-name {
+    display: inline;
+}
+.side {
+    display: inline;
+}
+.user-date {
+    display: inline;
+}
+
+
+.comment {
+    height: 30px;
+    position: absolute;
+    top: 105px;
+    left: 890px;
+}
+.comment-icon {
+    display: inline;
+    font-size: 16px;
+}
+.comment-cnt {
+    display: inline;
+    font-size: 16px;
+}
+
+
+.line {
+    position: absolute;
+    background-color: #396cfd;
+    width: 940px;
+    height: 4px;
+    left: 490px;
+    top: 135px;
+}
+
+
+.Main-img {
+    position: absolute;
+    left: 630px;
+    top: 160px;
+}
+
+
+.comment2 {
+    position: absolute;
+    width: 130px;
+    height: 40px;
+    left: 500px;
+    top: 520px;
+}
+.comment-icon2 {
+    display: inline;
+    width: 25px;
+    height: 25px;
+}
+.comment-cnt2 {
+    display: inline;
+    font-size: 16pt;
+}
+
+
+.user-comment {
+    position: absolute;
+    left: 490px;
+    top: 570px;
+}
+.user-comment-input {
+    border: 2px solid #396cfd;
+    box-sizing: border-box;
+    width: 940px;
+    height: 100px;
+}
+.user-comment-admit {
+    background-color: #396cfd;
+    color: white;
+    position: absolute;
+    left: 880px;
+    top: 70px;
+    border: none;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+
+.another-comment {
+    width: 940px;
+    position: absolute;
+    left: 490px;
+    top: 670px;
+}
+ul {
+    list-style: none;
+    padding-left:0px;
+}
+.another-comment-list {
+    margin-top: 15px;
+    box-sizing: border-box;
+}
+.another-comment-box {
+    position: absolute;
+    box-sizing: border-box;
+    width: 940px;
+    height: 80px;
+    border: #396cfd 2px solid;
+}
+.another-user-info {
+    box-sizing: border-box;
+    border: none;
+    display: inline;
+    width: 940px;
+    height: 40px;
+    left: -2px;
+    position: absolute;
+    background-color: #396cfd;
+}
+.another-user-name {
+    position: absolute;
+    left: 10px;
+    color: white;
+    font-size: 18pt;
+    top: -18px;
+}
+.another-sub-info {
+    float: right;
+}
+.remove {
+    display: inline;
+    color: white;
+    background-color: #396cfd;
+    border: none;
+    font-size: 16px;
+    font-weight: 900;
+    margin-right: 10px;
+}
+.another-user-date {
+    display: inline;
+    font-size: 16px;
+    font-weight: 900;
+    color: white;
+}
+.another-comment-text {
+    display: flex;
+    position: absolute;
+    box-sizing: border-box;
+    border: none;
+    top: 40px;
+    width: 940px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 900;
+    padding-top: 10px;
+}

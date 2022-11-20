@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/CSS/BoardView.css">
+    <script type="javascript" src="/JS/BoardView.js"></script>
+    <title>PhotoBoard</title>
 </head>
 <body>
+    <!-- 넷바 -->
+    <div class="nav-bar">
+        <div class="logo">
+            <img class="logo-image" src="/image/로고아이콘.png"/>
+            <h1 class="logo-title">Photoble</h1>
+        </div>
+        <div class="switch-page">
+            <button class="notice" onclick="location.href='MyPage_notice.html'">마이페이지</button>
+            <button class="logout" onClick="location.href='login.html'">로그아웃</button>
+        </div>
+    </div>
+    <!-- 메인 콘텐츠 -->
+    <div class="Main">
+        <!-- 구분선 -->
+        <div class="division-line1"></div>
+        <div class="division-line2"></div>
 
+        <div class="content">
+            <header>
+                <!-- 내 게시글 정보 -->
+                <h1 th:text="${board.title}" class="board-title"></h1>
+                <div class="user-info">
+                    <h3 th:text="${board.user}" class="user-name"></h3>
+                    <h3 class="side"> | </h3>
+                    <h3 th:text="${board.date}" class="user-date"></h3>
+                </div>
+                <!-- 넷바 아래 댓글수 & 댓글 아이콘 -->
+                <div class="comment">
+                    <img class="comment-icon" src="/image/댓글 아이콘.png"/>
+                    <h3 class="comment-cnt">11</h3>
+                </div>
+            </header>
+
+            <!-- 이미지 위에 선 -->
+            <div class="line"></div>
+
+            <!-- 이미지 -->
+            <img class="Main-img" src="/image/겨울 이미지.png"/>
+
+            <footer>
+                <!-- 내 게시글 댓글 수 & 아이콘 -->
+                <div class="comment2">
+                    <img class="comment-icon2" src="/image/댓글 아이콘.png"/>
+                    <h3 class="comment-cnt2">댓글 11개</h3>
+                </div>
+
+                <!-- 내 댓글 작성 -->
+                <div class="user-comment">
+                    <input type="text" class="user-comment-input">
+                    <input type="submit" value="등록" class="user-comment-admit">
+                </div>
+
+                <!-- 다른유저 댓글 -->
+                <ul class="another-comment">
+                    <li class="another-comment-list">
+                        <div class="another-comment-box">
+                            <div class="another-user-info">
+                                <h3 class="another-user-name">yoon321</h3>
+                                <div class="another-sub-info">
+                                    <input type="submit" value="삭제" class="remove">
+                                    <h3 class="another-user-date">2019.12.30</h3>
+                                </div>
+                            </div>
+                            <div class="another-comment-text">겨울에 다녀옴</div>>
+                        </div>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>
