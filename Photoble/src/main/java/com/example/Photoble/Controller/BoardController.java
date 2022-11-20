@@ -24,19 +24,28 @@ public class BoardController {
         list = boardService.boardlist();
 
         model.addAttribute("list", list);
+        model.addAttribute("imglink", "/Image/winter.png");
 
         return  "Board/BoardMain";
     }
 
     @GetMapping("/board/upload")
-    public String boardWriteForm(Board board, Model model) {
+    public String boardWriteForm() {
 
         return "Board/BoardUpload";
     }
 
     @PostMapping("/board/uploading")
-    public String boardUploding(){
+    public String boardUploding(Board board, Model model) throws Exception{
 
+        boardService.boardWrite(board);
         return  "Board/BoardUploading";
+    }
+
+    @GetMapping("/board/view")
+    public String boardview(Model model, Integer id) {
+
+        model.addAttribute("board", boardService.boardView(id));
+        return "Board/BoardView";
     }
 }

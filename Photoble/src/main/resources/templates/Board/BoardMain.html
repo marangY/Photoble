@@ -1,94 +1,64 @@
 <!DOCTYPE html>
 <html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Expanding Flex Cards</title>
-  <link rel="stylesheet" href="/CSS/BoardMain.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <title>Photoble</title>
+    <link rel="stylesheet" href="/CSS/BoardMain.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <!--넷바-->
-    <div class="nav-bar">
-        <div class="logo">
-            <img class="logo-image" src="/Image/로고아이콘.png"/>
-            <h1 class="logo-title">Photoble</h1>
-        </div>
-        <div class="switch-page">
-            <button class="notice" onclick="location.href='MyPage_notice.html'">마이페이지</button>
-            <button class="logout" onClick="location.href='login.html'">로그아웃</button>
-        </div>
+<!--넷바-->
+<div class="nav-bar">
+    <div class="logo">
+        <img class="logo-image" src="/Image/로고아이콘.png"/>
+        <h1 class="logo-title">Photoble</h1>
     </div>
-    <!--메인 콘텐츠-->
-    <div class="Main">
-        <ul>
-            <li th:each="board : ${list}" class="content">
-                <div class="options">
-                    <div class="option active" style="--optionBackground:url(https://66.media.tumblr.com/6fb397d822f4f9f4596dff2085b18f2e/tumblr_nzsvb4p6xS1qho82wo1_1280.jpg);">
-                       <div class="shadow"></div>
-                       <div class="label">
-                          <div class="icon">
-                             <i class="fas fa-walking"></i>
-                          </div>
-                          <div class="info">
-                             <div class="main">The Jungle</div>
-                             <div class="sub">Best place for walking!</div>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/8b69cdde47aa952e4176b4200052abf4/tumblr_o51p7mFFF21qho82wo1_1280.jpg);">
-                       <div class="shadow"></div>
-                       <div class="label">
-                          <div class="icon">
-                             <i class="fas fa-snowflake"></i>
-                          </div>
-                          <div class="info">
-                             <div class="main">The Snow</div>
-                             <div class="sub">Best time to Enjoy!</div>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/5af3f8303456e376ceda1517553ba786/tumblr_o4986gakjh1qho82wo1_1280.jpg);">
-                       <div class="shadow"></div>
-                       <div class="label">
-                          <div class="icon">
-                             <i class="fas fa-tree"></i>
-                          </div>
-                          <div class="info">
-                             <div class="main">The Tree</div>
-                             <div class="sub">Best place to stay!</div>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/5516a22e0cdacaa85311ec3f8fd1e9ef/tumblr_o45jwvdsL11qho82wo1_1280.jpg);">
-                       <div class="shadow"></div>
-                       <div class="label">
-                          <div class="icon">
-                             <i class="fas fa-tint"></i>
-                          </div>
-                          <div class="info">
-                             <div class="main">The Sea</div>
-                             <div class="sub">Best place for Evening Walk!</div>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/f19901f50b79604839ca761cd6d74748/tumblr_o65rohhkQL1qho82wo1_1280.jpg);">
-                       <div class="shadow"></div>
-                       <div class="label">
-                          <div class="icon">
-                             <i class="fas fa-sun"></i>
-                          </div>
-                          <div class="info">
-                             <div class="main">The Mountains</div>
-                             <div class="sub">Best place for Adventure!</div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-                 <div th:text = "${board.title}" class="title"></div>
-                 <h3 th:text = "${board.user}" class="user-name"></h3>
-            </li>
-        </ul>
+    <div class="switch-page">
+        <button class="notice" onclick="location.href='MyPage_notice.html'">마이페이지</button>
+        <button class="logout" onClick="location.href='login.html'">로그아웃</button>
     </div>
-  <script type="text/javascript" src="/FRONT/js/Pboard-main.js"></script>
+</div>
+<!--메인 콘텐츠-->
+<div class="Main">
+    <ul>
+        <li th:each="board : ${list}" class="content">
+            <div class="options">
+                <div class="option active" th:style="'--optionBackground:url('+${imglink}+');'">
+                    <div class="shadow"></div>
+                    <div class="label">
+                        #mountain
+                    </div>
+                </div>
+                <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/8b69cdde47aa952e4176b4200052abf4/tumblr_o51p7mFFF21qho82wo1_1280.jpg);">
+                    <div class="shadow"></div>
+                    <div class="label">
+                        #mountain
+                    </div>
+                </div>
+                <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/5af3f8303456e376ceda1517553ba786/tumblr_o4986gakjh1qho82wo1_1280.jpg);">
+                    <div class="shadow"></div>
+                    <div class="label">
+                        #mountain
+                    </div>
+                </div>
+                <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/5516a22e0cdacaa85311ec3f8fd1e9ef/tumblr_o45jwvdsL11qho82wo1_1280.jpg);">
+                    <div class="shadow"></div>
+                    <div class="label">
+                        #mountain
+                    </div>
+                </div>
+                <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/f19901f50b79604839ca761cd6d74748/tumblr_o65rohhkQL1qho82wo1_1280.jpg);">
+                    <div class="shadow"></div>
+                    <div class="label">
+                        #mountain
+                    </div>
+                </div>
+            </div>
+            <div th:text="${board.title}" th:href="@{/board/view(id=${board.id})}" class="title"></div>
+            <h3 th:text="${board.user}" class="user-name"></h3>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript" src="/JS/BoardMain.js"></script>
 
 </body>
 </html>
