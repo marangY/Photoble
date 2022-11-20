@@ -9,6 +9,7 @@ import javax.persistence.Id;
 @Data
 public class Image_Tag {
 
+    @Id
     private String image;
 
     private String tag;

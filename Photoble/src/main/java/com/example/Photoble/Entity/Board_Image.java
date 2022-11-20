@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Data
 public class Board_Image {
     @Id
-    private Integer id;
+    private Integer board;
 
     private String image;
 }

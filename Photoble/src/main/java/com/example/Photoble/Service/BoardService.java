@@ -21,7 +21,6 @@ public class BoardService {
         List<Board> list = boardRepository.findAll();
         Collections.shuffle(list);
 
-
         return  list;
     }
 
