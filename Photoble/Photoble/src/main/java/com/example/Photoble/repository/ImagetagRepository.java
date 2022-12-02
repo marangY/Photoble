@@ -1,6 +1,5 @@
 package com.example.Photoble.repository;
 
-import com.example.Photoble.entity.Image;
 import com.example.Photoble.entity.ImageTag;
 import jakarta.persistence.Table;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +14,5 @@ public interface ImagetagRepository extends JpaRepository<ImageTag, String> {
 
     List<ImageTag> findByTagContaining(String image);
     List<ImageTag> findByTag(String image);
+
 }

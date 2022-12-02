@@ -55,7 +55,7 @@ public class BoardService {
                     tag += " #"+imageTag.getTag();
                 }
 
-                imageTagPrint.setTag(tag);
+                imageTagPrint.setTag(tag.trim());
 
                 imageTagPrintList.add(imageTagPrint);
             }
@@ -176,5 +176,20 @@ public class BoardService {
     public void commentRemove(Integer commentId){
 
         commentsRepository.deleteById(commentId);
+    }
+
+    public void boardRemove(Integer id){
+        List<BoardImage> boardImageList = boardimageRepository.findByBoard(id);
+        List<Comments> commentsList = commentsRepository.findByBoard(id);
+
+        for (BoardImage boardImage: boardImageList) {
+            boardimageRepository.delete(boardImage);
+        }
+
+        for (Comments comments: commentsList) {
+            commentsRepository.delete(comments);
+        }
+
+        boardRepository.deleteById(Long.valueOf(id));
     }
 }

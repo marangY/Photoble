@@ -87,13 +87,13 @@ body {
     border-color: #396cfd;
 }
 .input-id-box {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 40px;
     position: relative;
     display: inline;
     box-sizing: border-box;
     width: 480px;
-    height: 80px;
+    height: 70px;
     font-size: 24pt;
     border: none;
     border-bottom: 4px solid #396cfd;

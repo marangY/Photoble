@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,17 @@
     <link rel="stylesheet" type="text/css" href="/css/MyPage_notice.css">
     <title>Photoble</title>
 </head>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+        var value = /*[[param.searchKeyword]]*/;
+
+        if (value != null && value.isEmpty()) {
+            document.getElementById("search-input").value = value;
+        }
+    /*]]>*/
+</script>
+
 <body>
     <div class="nav-bar">
         <div class="logo" onclick="location.href='/cloud/main'">
@@ -22,27 +33,28 @@
     <div class="Main">
         <div class="division-line2"></div>
         <div class="division-line3"></div>
-        <form>
+        <form th:action="@{/mypage/notice}" method="get">
             <div class="search">
-                <input class="search-input" type="text" placeholder="검색할 내용을 입력하세요">
-                <button class="search-btn">
+                <input name="searchKeyword" th:value="${param.searchKeyword}" class="search-input" type="text" placeholder="검색할 내용을 입력하세요">
+                <button class="search-btn" type="submit">
                     <img class="search-img" src="/image/search.png">
                 </button>
             </div>
         </form>
         <table class="content-list">
             <div class="content-group">
-                <div class="content">
-                    <button class="delete" onclick="locatoin.href=''">삭제</button>
+                <div class="content" th:each="board : ${list}">
+                    <a class="title" th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
+                    <a th:href="@{/board/remove(id=${board.id})}"><button class="delete">삭제</button></a>
                 </div>
             </div>
         </table>
         <div class="change">
-            <button class="prev-page"><</button>
-            <button class="num">1</button>
-            <button class="num">2</button>
-            <button class="num">3</button>
-            <button class="next-page">></button>
+            <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+                <a th:if="${page != nowPage and param.searchKeyword != null and list.getTotalPages != 0}" th:href="@{/mypage/notice(page = ${page - 1}, searchKeyword = ${param.searchKeyword}, searchTag = ${param.searchTag})}" style="text-decoration-line: none"><button class="num" th:text="${page}"></button></a>
+                <a th:if="${page != nowPage and param.searchKeyword == null and list.getTotalPages != 0}" th:href="@{/mypage/notice(page = ${page - 1})}" th:text="${page}"><button class="num" th:text="${page}" style="text-decoration-line: none"></button></a>
+                <a th:if="${page == nowPage}"><button class="num" style="color : red; text-decoration-line: none" th:text="${page}"></button></a>
+            </th:block>
         </div>
     </div>
 </body>

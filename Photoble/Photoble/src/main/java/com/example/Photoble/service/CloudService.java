@@ -1,9 +1,8 @@
 package com.example.Photoble.service;
 
 import com.example.Photoble.SubClass.DateNow;
-import com.example.Photoble.entity.Image;
-import com.example.Photoble.entity.ImageTag;
-import com.example.Photoble.entity.Tag;
+import com.example.Photoble.entity.*;
+import com.example.Photoble.repository.BoardimageRepository;
 import com.example.Photoble.repository.ImageRepository;
 import com.example.Photoble.repository.ImagetagRepository;
 import com.example.Photoble.repository.TagRepository;
@@ -22,13 +21,16 @@ import java.util.UUID;
 public class CloudService {
 
     @Autowired
-    ImageRepository imageRepository;
+    private ImageRepository imageRepository;
 
     @Autowired
-    TagRepository tagRepository;
+    private TagRepository tagRepository;
 
     @Autowired
-    ImagetagRepository imageTagRepository;
+    private ImagetagRepository imageTagRepository;
+
+    @Autowired
+    private BoardimageRepository boardimageRepository;
 
     public void upload(HttpSession session, String tag, MultipartFile multipartFile) throws IOException {
         Image image = new Image();
@@ -103,10 +105,86 @@ public class CloudService {
             imageTagList = imageTagRepository.findByTagContaining(searchKeyword.trim());
         }
 
+        List<String> stringList = new ArrayList<>();
+
         for (ImageTag imageTag: imageTagList) {
+            if (stringList.contains(imageTag.getImage())){
+                continue;
+            }
             imageList.add(imageRepository.findByUserAndImagename(session.getAttribute("userName").toString(), imageTag.getImage()));
+            stringList.add(imageTag.getImage());
         }
 
         return imageList;
+    }
+
+    public Image returnImage(String imagename){
+        return imageRepository.findByImagename(imagename);
+    }
+
+    public String returnImageTag(String imagename){
+
+        List<ImageTag> imageTagList = imageTagRepository.findByImage(imagename);
+        String tag = "";
+        for (ImageTag imageTag: imageTagList) {
+            tag += " #"+imageTag.getTag();
+        }
+
+        return tag.trim();
+    }
+
+    public void modifyCloudTag(String pastTag, String tag, String name){
+        if (pastTag != null || !pastTag.equals("")){
+            String[] tagarray = pastTag.trim().split("#");
+
+            for (String deleteTag: tagarray) {
+                ImageTag del = new ImageTag();
+                del.setTag(deleteTag.trim());
+                del.setImage(name);
+
+                imageTagRepository.delete(del);
+            }
+        }
+
+        if (tag != null || !tag.equals("")){
+            String[] tagarray = tag.trim().split("#");
+
+            for (String savetag: tagarray) {
+
+                if (savetag.equals(""))
+                    continue;
+
+                Tag intag = new Tag();
+                ImageTag inImageTag = new ImageTag();
+
+                intag.setTag(savetag.trim());
+
+                inImageTag.setImage(name);
+                inImageTag.setTag(savetag.trim());
+
+                tagRepository.save(intag);
+
+                imageTagRepository.save(inImageTag);
+            }
+        }
+    }
+    public void deleteCloud(String name){
+        List<ImageTag> imageTagList = imageTagRepository.findByImage(name);
+        List<BoardImage> boardImageList = boardimageRepository.findByImage(imageRepository.findByImagename(name).getImagepath());
+
+
+        File file = new File(imageRepository.findByImagename(name).getImagepath());
+
+        file.delete();
+
+        for (ImageTag imageTag:imageTagList) {
+            imageTagRepository.delete(imageTag);
+        }
+
+        for (BoardImage boardImage : boardImageList) {
+            boardimageRepository.delete(boardImage);
+        }
+
+        imageRepository.delete(imageRepository.findByImagename(name));
     }
 }

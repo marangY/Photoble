@@ -13,4 +13,5 @@ import java.util.List;
 @Table(name = "comments")
 public interface CommentsRepository extends JpaRepository<Comments, Integer> {
     List<Comments> findByBoard(Integer id);
+    List<Comments> findByUser(String user);
 }

@@ -12,4 +12,5 @@ import java.util.List;
 @Table(name = "board_image")
 public interface BoardimageRepository extends JpaRepository<BoardImage, Integer> {
     List<BoardImage> findByBoard(Integer board);
+    List<BoardImage> findByImage(String name);
 }

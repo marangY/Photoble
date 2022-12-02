@@ -101,8 +101,20 @@ public class BoardController {
     }
 
     @PostMapping("/comment/remove")
-    public  String removeComment(Integer commentId, String board){
+    public String removeComment(Integer commentId, String board){
         boardService.commentRemove(commentId);
         return "redirect:/board/view?id="+board;
+    }
+
+    @GetMapping("/board/remove")
+    public String removeBoard(Integer id, Model model){
+
+        boardService.boardRemove(id);
+
+        model.addAttribute("title", "Success!");
+        model.addAttribute("message","게시글 삭제 성공");
+        model.addAttribute("url", "/board/main");
+
+        return "sub/alert";
     }
 }
